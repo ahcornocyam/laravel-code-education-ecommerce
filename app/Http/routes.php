@@ -11,9 +11,9 @@
 |
  */
 
-Route::get('/', function () {
-		return view('app');
-	});
+Route::get('/', ['as' => 'home', function () {
+			return view('app');
+		}]);
 
 /*
 |--------------------------------------------------------------------------
@@ -29,21 +29,5 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
 		//
 	});
-Route::resource('admin/categories', 'AdminCategoriesController', [
-		'index'   => 'categories.index',
-		'create'  => 'categories.create',
-		'store'   => 'categories.store',
-		'show'    => 'categories.show',
-		'edit'    => 'categories.edit',
-		'update'  => 'categories.update',
-		'destroy' => 'categories.delete',
-	]);
-Route::resource('admin/products', 'AdminProductsController', [
-		'Index'   => 'products.index',
-		'Create'  => 'products.create',
-		'Store'   => 'products.store',
-		'show'    => 'products.show',
-		'edit'    => 'products.edit',
-		'update'  => 'products.update',
-		'destroy' => 'products.delete',
-	]);
+Route::resource('admin/categories', 'AdminCategoriesController');
+Route::resource('admin/products', 'AdminProductsController');
