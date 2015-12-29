@@ -15,7 +15,7 @@
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 		<header class="mdl-layout__header">
 			<div class="mdl-layout__header-row">
-				<span class="mdl-layout__title">CodeCommerce</span>
+				<span class="mdl-layout__title"><a href="{{ route('home')}}">CodeCommerce</a></span>
 				<div class="mdl-layout-spacer"></div>
 				<nav class="mdl-navigation">
 					<a class="mdl-navigation__link" href="{{ route('home')}}">Home</a>

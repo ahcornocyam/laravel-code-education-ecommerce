@@ -4,8 +4,8 @@
 			<header>
 				<h1>Categorias</h1>
 			</header>
-			<section>
-				<a href="#" id="novaCat">nova categoria</a>
+			<section class="mdl-grid">
+				<a href="{{ route( 'admin.categories.create' ) }}" id="novaCat" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">nova categoria</a>
 				<div for="novaCat" class="mdl-tooltip">
 					nova categoria
 				</div>
@@ -18,22 +18,21 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td> nome 1</td>
-							<td> descrição</td>
-							<td>
-							 <a href="#" id="editCat">editar</a> |
-							 <div for="editCat" class="mdl-tooltip">
-							 	editar
-							 </div>
-							 <a href="#" id="delCat">Excluir</a>
-							 <div for="delCat" class="mdl-tooltip">
-							 	Excluir
-							 </div>
-							</td>
-						</tr>
+							@foreach( $category as $item )
+								<tr>
+									<td> {{ $item->name }}</td>
+									<td> {{ $item->description }}</td>
+									<td>
+									 <a href="{{route('admin.categories.edit',['id'=>$item->id])}}"><i class="material-icons">edit</i></a> |
+									 <a href="{{route('admin.categories.destroy',[ 'id'=>$item->id ])}}"><i class="material-icons">delete</i></a>									 
+									</td>
+								</tr>
+							@endforeach
 					</tbody>
 				</table>
+				<div class="mdl-cell mdl-cell--12-col">
+					{{ $category->render() }}
+				</div>
 			</section>
 		</article>
 @stop()

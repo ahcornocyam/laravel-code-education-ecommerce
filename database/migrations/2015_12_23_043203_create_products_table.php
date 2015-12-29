@@ -11,11 +11,13 @@ class CreateProductsTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('products', function (Blueprint $table) {
-				$table->increments('id')
-				->string('name', 80)
-					->text('description')
-				->decimal('price')
-					->timestamps();
+				$table->increments('id');
+				$table->string('name', 80);
+				$table->text('description');
+				$table->decimal('price');
+				$table->boolean('featured')->default(false);
+				$table->boolean('recommend')->default(false);
+				$table->timestamps();
 			});
 	}
 

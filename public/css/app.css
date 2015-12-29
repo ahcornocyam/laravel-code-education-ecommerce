@@ -1,0 +1,30 @@
+a{
+	text-decoration: none;
+
+}
+a:hover{
+	color: indigo;
+}
+span.mdl-layout__title > a{
+	color: #ffffff;
+}
+.mdl-navigation > .mdl-navigation__link:hover{
+	border-bottom: 1px solid white;
+}
+.mdl-textfield {
+	min-width: 100%;
+}
+.pagination{
+	text-align: center;
+}
+.pagination li{
+	display: inline;
+	padding: 15px;
+	min-width: 100%;
+}
+.pagination li:hover{
+	border-bottom: 1px solid indigo;
+}
+.pagination li.active{
+	border-bottom: 1px solid indigo;
+}

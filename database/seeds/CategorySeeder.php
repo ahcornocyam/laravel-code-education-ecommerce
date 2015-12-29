@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserTableSeeder::class);
-				$this->call(CategorySeeder::class);
+        DB::table('categories')->truncate();
+				factory('CodeCommerce\Category',20)->create();
     }
 }
