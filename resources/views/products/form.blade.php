@@ -1,48 +1,46 @@
-<div class="mdl-cell--12-col">
-	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		{!! Form::text('name',null,[
-			'class' => 'mdl-textfield__input',
-			'id'		=> 'name'
-			]) !!}
-		{!! Form::label('name','Nome:',[
-			'class' => 'mdl-textfield__label'
-			])!!}
+
+
+<div class="row">
+	<div class="input-field col l4">		
+		{!! Form::select('category_id',$categories,null) !!}
+		{!! Form::label('category','Categoria:') !!}
 	</div>
 </div>
-<div class="mdl-cell--12-col">
-	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+<div class="col l12">
+	<div class="input-field">
+		{!! Form::label('name','Nome:')!!}
+		{!! Form::text('name',null,['length'=> '80']) !!}
+	</div>
+</div>
+<div class="col l12">
+	<div class="input-field">
+		{!! Form::label('description','Descrição:')!!}
 		{!! Form::textarea('description',null,[
-			'class' => 'mdl-textfield__input',
-			'id'		=> 'description'
+			'rows' 	=> '5',
+			'class' => 'materialize-textarea'
 			]) !!}
-			{!! Form::label('description','Descrição:',[
-				'class' => 'mdl-textfield__label'
-				])!!}
 	</div>
 </div>
-<div class="mdl-cell--3-col">
-	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+<div class="col l4">
+	<div class="input-field">
+		{!! Form::label('price','Preço:')!!}
 		{!! Form::number('price',null,[
-			'class' => 'mdl-textfield__input',
-			'id'		=> 'price',
 			'min' 	=> '0'
 			]) !!}
-			{!! Form::label('price','Preço:',[
-				'class' => 'mdl-textfield__label'
-				])!!}
 	</div>
 </div>
-<div class="mdl-grid">
-	<div class="mdl-cell--6-col">
-		<div class="">
+<div class="row">
+	<div class="col l6">
+	    {!! Form::checkbox('featured',1,isset($product) && $product->featured == 1 ? true : false,[
+				'id' =>'featured'
+				]) !!}
 			{!! Form::label('featured','Em destaque:')!!}
-	    {!! Form::checkbox('featured',true) !!}
-		</div>
 	</div>
-	<div class="mdl-cell--6-col">
-		<div class="">
+	<div class="col l6">
+    	{!! Form::checkbox('recommend',1,isset($product) && $product->recommend == 1 ? true : false,[
+				'id' =>"recommend",
+				'class' =>'grey-text'
+				]) !!}
 			{!! Form::label('recommend','Recomendado:')!!}
-    	{!! Form::checkbox('recommend',true) !!}
-		</div>
 	</div>
 </div>

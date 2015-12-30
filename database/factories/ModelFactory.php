@@ -1,5 +1,6 @@
 <?php
 use CodeCommerce\Category;
+use CodeCommerce\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,17 @@ $factory->define(CodeCommerce\User::class, function (Faker\Generator $faker) {
 });
 $factory->define(Category::class, function(Faker\Generator $faker){
 	return [
-		'name' => $faker->word(),
+		'name'        => $faker->word(),
 		'description' => $faker->sentence()
+	];
+});
+$factory->define(Product::class, function(Faker\Generator $faker){
+	return [
+		'name'          => $faker->word(),
+		'description'   => $faker->sentence(),
+        'price'         => $faker->randomNumber(2),
+        'featured'      => $faker->boolean(50),
+        'recommend'     => $faker->boolean(50),
+        'category_id'   => $faker->numberBetween(1,20)
 	];
 });

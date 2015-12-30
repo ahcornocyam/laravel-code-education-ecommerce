@@ -5,18 +5,16 @@
 				<h1>Editar Categoria</h1>
 			</header>
 			<section>
-				<div class="mdl-grid">
-						<div class="mdl-cell mdl-cell--12-col">
+				<div class="row">
+						<div class="col l12">
 
 							{!! Form::model($category,['route'=> ['admin.categories.update','id'=>$category->id],'method'=>'put']) !!}
 								@include('categories.form')
 								<div class="mdl-textfield mdl-js-textfield">
-									<button id="edit" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" type="submit">
-										<i class="material-icons">edit_circle</i>
+									<button class="grey btn-floating btn-large waves-effect waves-light" type="submit">
+										<i class="material-icons">edit</i>
 									</button>
-									<div class="mdl-tooltip" for="edit">
-											Editar
-									</div>
+									<a href="{{route('admin.categories.index')}}" class="grey btn-floating btn-large waves-effect waves-light"><i class="material-icons">keyboard_return</i></a>
 								</div>
 							{!! Form::close()!!}
 						</div>

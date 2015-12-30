@@ -6,6 +6,10 @@ use CodeCommerce\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Product;
+use CodeCommerce\Category;
+
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductsController extends Controller {
 
@@ -31,8 +35,9 @@ class AdminProductsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create() {
-		return view('products.create');
+	public function create(Category $category) {
+		$categories = $category->lists('name','id');
+		return view( 'products.create', compact('categories') );
 	}
 
 	/**
@@ -67,10 +72,11 @@ class AdminProductsController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id) {
+	public function edit(Category $category, $id) {
 		//
 		$product = $this->product->find($id);
-		return view('products.edit',compact('product'));
+		$categories = $category->lists('name','id');
+		return view('products.edit',compact('product','categories'));
 	}
 
 	/**
@@ -102,7 +108,15 @@ class AdminProductsController extends Controller {
 	 */
 	public function destroy($id) {
 		//
-		$this->product->find($id)->delete();
+		$product        = $this->product->find($id);
+        $images         = $product->images;
+        foreach($images as $image){
+            $image->delete();
+            if(file_exists(public_path().'/uploads/'.$image->id.'.'.$image->extension)){
+                Storage::disk('local_public')->delete($image->id.'.'.$image->extension);
+            }
+        }
+        $product->delete();
 		return redirect()->route('admin.products.index');
 	}
 }

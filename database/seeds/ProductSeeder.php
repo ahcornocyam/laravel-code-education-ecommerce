@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->truncate();
-		factory('CodeCommerce\Category',20)->create();
+        DB::table('products')->truncate();
+        factory('CodeCommerce\Product',20)->create();
     }
 }

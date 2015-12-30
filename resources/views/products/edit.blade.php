@@ -9,13 +9,11 @@
 						<div class="mdl-cell mdl-cell--12-col">
 							{!! Form::model($product,['route'=> ['admin.products.update','id'=>$product->id],'method'=>'put']) !!}
 								@include('products.form')
-								<div class="mdl-textfield mdl-js-textfield">
-									<button id="edit" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" type="submit">
-										<i class="material-icons">edit_circle</i>
+								<div class="input-field">
+									<button class="grey btn-floating btn-large waves-effect waves-light" type="submit">
+										<i class="material-icons">edit</i>
 									</button>
-									<div class="mdl-tooltip" for="edit">
-											Editar
-									</div>
+									<a href="{{route('admin.products.index')}}" class="grey btn-floating btn-large waves-effect waves-light"><i class="material-icons">keyboard_return</i></a>
 								</div>
 							{!! Form::close()!!}
 						</div>

@@ -7,15 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //
-		protected  $table       = 'Products';
+		protected  $table       = 'products';
 	 	protected $primarykey   = 'id';
-		protected $fillable 		=
+		protected $fillable 	=
 		[
+			'category_id',
 			'id',
 			'name',
 			'description',
 			'price',
 			'featured',
-			'recommend',
+			'recommend',			
 		];
+		
+		/*
+		* Relacionamento com categories
+		*/
+		public function category(){
+			return $this->belongsTo('CodeCommerce\Category');
+		}	
+		
+		/*
+     * Relacionamento com produtimage
+     */
+    public function images(){
+        return $this->hasMany('CodeCommerce\ProductImage');
+    }		
 }
