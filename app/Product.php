@@ -32,5 +32,17 @@ class Product extends Model
      */
     public function images(){
         return $this->hasMany('CodeCommerce\ProductImage');
-    }		
+    }
+	
+	/*
+	* Relacionmento com tag
+	*/
+	public function tags(){
+		return $this->belongsToMany('CodeCommerce\Tag');
+	}
+	
+	public function getTagsListAttribute(){
+			$tagList = $this->tags->lists('name')->all();
+			return implode( ', ',$tagList );
+		}
 }

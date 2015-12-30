@@ -10,6 +10,10 @@
 							{!! Form::open(['route'=> 'admin.products.store','method'=>'post']) !!}
 								@include('products.form')
 								<div class="input-field">
+									{!! Form::text( 'tags', null) !!}
+									{!! Form::label( 'tags', 'Tags:') !!}
+								</div>
+								<div class="input-field">
 									<button class="grey btn-floating btn-large waves-effect waves-light" type="submit">
 										<i class="material-icons">add</i>
 									</button>

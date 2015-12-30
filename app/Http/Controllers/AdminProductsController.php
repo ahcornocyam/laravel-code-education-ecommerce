@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Product;
 use CodeCommerce\Category;
+use CodeCommerce\Tag;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -49,9 +50,9 @@ class AdminProductsController extends Controller {
 	public function store(ProductRequest $request) {
 		$input = $request->all();
 
-		$this->product->fill($input);
-
-		$this->product->save();
+		$product= $this->product->fill($input);
+		$product->save();
+		//$product->tags()->sync( $this->getTagsIds( $request->tags ) );
 
 		return redirect()->route('admin.products.index');
 	}
@@ -97,6 +98,8 @@ class AdminProductsController extends Controller {
         }
 
 		$this->product->find($id)->update($input);
+		$product = $this->product->find($id);
+		$product->tags()->sync( $this->getTagsIds( $request->tags ) );
 		return redirect()->route('admin.products.index');
 	}
 
@@ -119,4 +122,14 @@ class AdminProductsController extends Controller {
         $product->delete();
 		return redirect()->route('admin.products.index');
 	}
+	
+	private function getTagsIds( $tags ){
+		$tagList 			= array_filter( array_map( 'trim', explode( ',', $tags ) ) );
+		$tagsID 		= [];
+		foreach ( $tagList as $tagName ) {
+			# code...
+			$tagsID[] = Tag::firstOrCreate([ 'name'=> $tagName ])->id;
+		}
+		return $tagsID;
+		}
 }
