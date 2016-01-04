@@ -44,5 +44,11 @@ class Product extends Model
 	public function getTagsListAttribute(){
 			$tagList = $this->tags->lists('name')->all();
 			return implode( ', ',$tagList );
-		}
+	}
+	public function scopeFeatured($query){
+		return $query->where('featured','=','1');
+	}
+	public function scopeRecommend($query){
+		return $query->where('recommend', '=', '1');
+	}
 }

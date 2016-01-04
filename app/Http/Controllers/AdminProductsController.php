@@ -52,7 +52,7 @@ class AdminProductsController extends Controller {
 
 		$product= $this->product->fill($input);
 		$product->save();
-		//$product->tags()->sync( $this->getTagsIds( $request->tags ) );
+		$product->tags()->sync( $this->getTagsIds( $request->tags ) );
 
 		return redirect()->route('admin.products.index');
 	}

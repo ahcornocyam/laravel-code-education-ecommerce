@@ -11,9 +11,7 @@
 |
  */
 
-Route::get('/', ['as' => 'home', function () {
-			return view('app');
-		}]);
+Route::get('/', ['as' => 'home', 'uses' => 'StoreController@index']);
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +53,8 @@ Route::group(['prefix'					=>'admin'],function(){
         Route::post('{id}/product',['as'		=>'admin.images.store', 'uses' 	=>'ProductImageController@store']);
         Route::get('destroy/{id?}/product',['as'=>'admin.images.destroy', 'uses'=>'ProductImageController@destroy']);
     });
+});
+
+Route::group(['prefix'					=>'category'],function(){
+		Route::get('{id?}',['as'=>'category.show','uses'=> 'CategoryController@show']);
 });
