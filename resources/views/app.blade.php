@@ -5,8 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Code-Commerce</title>
-	<link rel="stylesheet" href="{{ asset('/css/materialize.css') }}">
-	<link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+	<link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -44,9 +43,7 @@
 						<small>desenvolvido por Alexandre Roch</small>
 				</div>
 		</div>
-	</footer>
-	<script src="{{ asset('/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('/js/materialize.js') }}"></script>
-	<script src="{{ asset('/js/app.js')}}"></script>
+	</footer>	
+	<script src="{{ elixir('js/admin.js')}}"></script>
 </body>
 </html>
