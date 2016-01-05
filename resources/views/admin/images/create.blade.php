@@ -8,7 +8,7 @@
 				<div class="row">
 						<div class="col l12">
 							{!! Form::open(['route'=> ['admin.images.store', $product->id ],'method'=>'post','enctype'=>'multipart/form-data']) !!}
-								@include('images.form')
+								@include('admin.images.form')
 								<div class="mdl-textfield mdl-js-textfield">
 									<button id="add" class="grey btn-floating btn-large waves-effect waves-light" type="submit">
 										<i class="material-icons">add</i>

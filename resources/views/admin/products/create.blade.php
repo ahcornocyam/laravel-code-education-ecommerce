@@ -8,7 +8,7 @@
 				<div class="row">
 						<div class="col l12">
 							{!! Form::open(['route'=> 'admin.products.store','method'=>'post']) !!}
-								@include('products.form')
+								@include('admin.products.form')
 								<div class="input-field">
 									{!! Form::text( 'tags', null) !!}
 									{!! Form::label( 'tags', 'Tags:') !!}

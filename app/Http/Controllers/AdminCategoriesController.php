@@ -22,7 +22,7 @@ class AdminCategoriesController extends Controller {
 	public function index() {
 		//
 		$category = $this->category->paginate(5);
-		return view( 'categories.index', compact( 'category' ) );
+		return view( 'admin.categories.index', compact( 'category' ) );
 	}
 
 	/**
@@ -31,7 +31,7 @@ class AdminCategoriesController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		return view('categories.create');
+		return view('admin.categories.create');
 	}
 
 	/**
@@ -67,7 +67,7 @@ class AdminCategoriesController extends Controller {
 	public function edit($id) {
 		//
 		$category = $this->category->find($id);
-		return view('categories.edit',compact('category'));
+		return view('admin.categories.edit',compact('category'));
 	}
 
 	/**

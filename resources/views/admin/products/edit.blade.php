@@ -8,7 +8,7 @@
 				<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--12-col">
 							{!! Form::model($product,['route'=> ['admin.products.update','id'=>$product->id],'method'=>'put']) !!}
-								@include('products.form')
+								@include('admin.products.form')
 								<div class="input-field">									
 									{!! Form::text( 'tags', $product->TagsList ) !!}
 									{!! Form::label( 'tags', 'Tags:') !!}

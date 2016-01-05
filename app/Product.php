@@ -45,10 +45,16 @@ class Product extends Model
 			$tagList = $this->tags->lists('name')->all();
 			return implode( ', ',$tagList );
 	}
+
 	public function scopeFeatured($query){
 		return $query->where('featured','=','1');
 	}
+
 	public function scopeRecommend($query){
 		return $query->where('recommend', '=', '1');
+	}
+
+	public function scopeOfCategory($query, $type){
+		return $query->where('category_id','=',$type);
 	}
 }

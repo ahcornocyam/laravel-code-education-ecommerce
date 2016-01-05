@@ -40,4 +40,5 @@ elixir(function(mix) {
     mix.version(['css/app.css','css/admin.css','js/app.js','js/admin.js']);
     mix.copy('resources/assets/fonts','public/build/fonts');
     mix.copy('resources/assets/font','public/build/font');
+    mix.copy('resources/assets/images','public/build/images');
 });

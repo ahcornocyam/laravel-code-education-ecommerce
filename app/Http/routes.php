@@ -28,6 +28,9 @@ Route::group(['middleware' => ['web']], function () {
 		//
 	});
 Route::group(['prefix'					=>'admin'],function(){
+	Route::get('/',['as'=> 'admin.index',function(){
+		return view('app');
+	}]);
 		//rotas para categorias
 	Route::group(['prefix'				=>'categories'],function(){
 		Route::get('/',['as'			=>'admin.categories.index','uses'	=>'AdminCategoriesController@index']);
@@ -57,4 +60,12 @@ Route::group(['prefix'					=>'admin'],function(){
 
 Route::group(['prefix'					=>'category'],function(){
 		Route::get('{id?}',['as'=>'category.show','uses'=> 'CategoryController@show']);
+});
+
+Route::group(['prefix'					=>'product'],function(){
+		Route::get('{id?}',['as'=>'product.show','uses'=> 'ProductController@show']);
+});
+
+Route::group(['prefix'					=>'tag'],function(){
+		Route::get('{id?}',['as'=>'tag.index','uses'=> 'TagController@index']);
 });

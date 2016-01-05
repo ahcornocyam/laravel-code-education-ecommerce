@@ -28,7 +28,7 @@ class AdminProductsController extends Controller {
 	 */
 	public function index() {
 		$product = $this->product->paginate(5);
-		return view( 'products.index', compact( 'product' ) );
+		return view( 'admin.products.index', compact( 'product' ) );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class AdminProductsController extends Controller {
 	 */
 	public function create(Category $category) {
 		$categories = $category->lists('name','id');
-		return view( 'products.create', compact('categories') );
+		return view( 'admin.products.create', compact('categories') );
 	}
 
 	/**
@@ -77,7 +77,7 @@ class AdminProductsController extends Controller {
 		//
 		$product = $this->product->find($id);
 		$categories = $category->lists('name','id');
-		return view('products.edit',compact('product','categories'));
+		return view('admin.products.edit',compact('product','categories'));
 	}
 
 	/**

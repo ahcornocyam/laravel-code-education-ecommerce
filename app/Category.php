@@ -20,10 +20,4 @@ class Category extends Model
 		public function products(){
 			return $this->hasMany('CodeCommerce\Product');
 		}
-		public function featured($query){
-			return $this->products->featured();
-		}
-		public function recommend($query){
-			return $this->products->recommend();
-		}
 }

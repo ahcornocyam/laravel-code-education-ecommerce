@@ -30,7 +30,7 @@ class ProductImageController extends Controller
     {
         $product = $this->product->find( $id );
         
-        return view('images.index',compact('product'));
+        return view('admin.images.index',compact('product'));
     }
 
     /**
@@ -41,7 +41,7 @@ class ProductImageController extends Controller
     public function create($id)
     {
         $product = $this->product->find($id);
-        return view('images.create',compact('product'));
+        return view('admin.images.create',compact('product'));
     }
 
     /**
