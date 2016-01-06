@@ -1,6 +1,6 @@
 <div class="features_items"><!--recommended-->
     <h2 class="title text-center">Recomendados</h2>
-    @foreach( $products as $item )
+    @forelse( $products as $item )
         <div class="col-sm-4">
             <div class="product-image-wrapper">
                 <div class="single-products">
@@ -27,5 +27,9 @@
                 </div>
             </div>
         </div>
-    @endforeach   
+    @empty
+        <div class="col-sm-4">
+            <p>não há produtos</p>
+        </div>
+    @endforelse
 </div><!--recommended-->
