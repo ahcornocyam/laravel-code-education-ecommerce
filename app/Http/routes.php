@@ -69,3 +69,9 @@ Route::group(['prefix'					=>'product'],function(){
 Route::group(['prefix'					=>'tag'],function(){
 		Route::get('{id?}',['as'=>'tag.index','uses'=> 'TagController@index']);
 });
+
+Route::group(['prefix'					=>'cart'],function(){
+		Route::get('/',			 ['as'=>'cart.index',	'uses'=> 'CartController@index']);
+		Route::get('add/{id}', ['as'=>'cart.add',		'uses'=> 'CartController@add']);
+
+});
