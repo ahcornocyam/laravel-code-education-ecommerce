@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 
 class CartController extends Controller
@@ -26,25 +27,25 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Session $session)
     {
-        if( !$request->session()->has('cart') )
+        if( !$session::has('cart') )
         {
-            $request->session()->put('cart', $this->cart );
+            $session::put('cart', $this->cart );
         }
-        $carrinho = $request->session()->get('cart');
+        $carrinho = $session::get('cart');
 
         return view( 'store.cart', compact('carrinho') );
     }
 
-    public function add( $id, Request $request )
+    public function add( $id, Session $session )
     {
-        $cart       = $this->getCart($request);
+        $cart       = $this->getCart($session);
         $product    = $this->product->find($id);
 
         $cart->add( $id, $product->name, $product->price, $product->images->first() );
 
-        $request->session()->put( 'cart', $cart );
+        $session::put( 'cart', $cart );
 
         return redirect()->route('cart.index');
     }
@@ -55,35 +56,35 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy($id, Session $session)
     {
         //
         $cart       = $this->getCart($request);
         $cart->remove($id);
-        $request->session()->put('cart',$cart);
+        $session::put('cart',$cart);
 
         return redirect()->route('cart.index');
     }
 
-    public function update( $id, Request $request )
+    public function update( $id, Request $request, Session $session )
     {
         $data = $request->all();
 
-        $cart = $request->session()->get('cart');
+        $cart = $session::get('cart');
         $product = $this->product->find($id);
         $cart->update( $id, $product->name, $product->price, $product->images->first(), $data['qtd']);
         if($data['qtd'] == 0 ){
             $cart->remove($id);
         }
-        $request->session()->put('cart',$cart);
+        $session::put('cart',$cart);
         return redirect()->route('cart.index');
     }
 
-    private function getCart(Request $request){
+    private function getCart(Session $session){
 
-        if( $request->session()->has('cart') )
+        if( $session::has('cart') )
         {
-            $cart = $request->session()->get('cart');
+            $cart = $session::get('cart');
 
         }
         else
