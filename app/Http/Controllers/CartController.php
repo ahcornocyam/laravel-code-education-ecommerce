@@ -59,7 +59,7 @@ class CartController extends Controller
     public function destroy($id, Session $session)
     {
         //
-        $cart       = $this->getCart($request);
+        $cart       = $this->getCart($session);
         $cart->remove($id);
         $session::put('cart',$cart);
 
