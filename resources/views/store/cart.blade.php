@@ -15,7 +15,7 @@
     						</tr>
     					</thead>
     					<tbody>
-    						@forelse( $carrinho->all() as $c=>$item )
+    						@forelse( $cart->all() as $c=>$item )
 
     						<tr>
     							<td class="cart_product">
@@ -55,7 +55,7 @@
                             <tr class="cart_menu">
                                 <td colspan="6">
                                     <div class="pull-right">
-                                        <span>Total : R$: {{ number_format( $carrinho->getTotal(),2,',','.' ) }}</span>
+                                        <span>Total : R$: {{ number_format( $cart->getTotal(),2,',','.' ) }}</span>
                                         <a href="" class="btn btn-success">finalizar pedido</a>
                                     </div>
                                 </td>

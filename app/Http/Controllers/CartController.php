@@ -33,9 +33,8 @@ class CartController extends Controller
         {
             $session::put('cart', $this->cart );
         }
-        $carrinho = $session::get('cart');
 
-        return view( 'store.cart', compact('carrinho') );
+        return view( 'store.cart', ['cart'=> $session::get('cart')] );
     }
 
     public function add( $id, Session $session )
