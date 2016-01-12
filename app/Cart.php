@@ -63,4 +63,12 @@
 			return $total;
 		}
 
+		public function getTotalProducts(){
+			$total = 0;
+			foreach ($this->items as $this->items['id'] => $value) {
+				$total+=$value['qtd'];
+			}
+			return $total;
+		}
+
 	}
