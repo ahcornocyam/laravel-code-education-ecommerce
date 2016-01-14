@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shop</title>
-   
+
 
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-    
+
 
 
 </head><!--/head-->
@@ -55,9 +54,27 @@
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
                             <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                            <li><a href="http://commerce.dev:10088/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>                            
                         </ul>
+                        <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}"><i class="fa fa-lock"></i>Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -84,7 +101,7 @@
                                     <li><a href="shop.html">Products</a></li>
                                     <li><a href="product-details.html">Product Details</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="{{ route('cart.index') }}">Cart</a></li>
                                     <li><a href="login.html">Login</a></li>
                                 </ul>
                             </li>
@@ -108,7 +125,6 @@
 <section>
     <div class="container">
         <div class="row">
-
                 @yield('categories')
                 @yield('content')
 
@@ -140,10 +156,11 @@
 
 </footer><!--/Footer-->
 
-
+<!-- JavaScripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script src="{{ elixir('js/app.js') }}"></script>
-
 
 </body>
 </html>

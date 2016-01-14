@@ -3,7 +3,7 @@
     	<section id="cart_items">
     		<div class="container">
     			<div class="table-responsive cart_info">
-    				<table class="table table-condensed">
+                    <table class="table table-condensed">
     					<thead>
     						<tr class="cart_menu">
     							<th class="image">Item</th>
@@ -16,12 +16,11 @@
     					</thead>
     					<tbody>
     						@forelse( $cart->all() as $c=>$item )
-
     						<tr>
     							<td class="cart_product">
-    								<a href="#">
-    									<img src="{{ url( 'uploads/'.$item['image']->id.'.'.$item['image']->extension ) }}" alt="" width="80">
-    								</a>
+    								 <a href="#">
+                                        <img src="{{ url( 'uploads/'.$item['image']->id.'.'.$item['image']->extension ) }}" alt="" width="80">
+                                    </a>
     							</td>
     							<td class="cart_description">
     								<h4><a href="{{ route('product.show',['id'=> $c]) }}"> {{ $item['name'] }}</a></h4>
@@ -56,7 +55,7 @@
                                 <td colspan="6">
                                     <div class="pull-right">
                                         <span>Total : R$: {{ number_format( $cart->getTotal(),2,',','.' ) }}</span>
-                                        <a href="" class="btn btn-success">finalizar pedido</a>
+                                        <a href="{{ route('checkout.place') }}" class="btn btn-success">finalizar pedido</a>
                                     </div>
                                 </td>
                             </tr>

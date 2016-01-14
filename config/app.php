@@ -156,6 +156,9 @@ return [
 		CodeCommerce\Providers\EventServiceProvider::class ,
 		CodeCommerce\Providers\RouteServiceProvider::class ,
 
+		Barryvdh\Cors\ServiceProvider::class,
+		Krucas\Notification\NotificationServiceProvider::class,
+
 	],
 
 	/*
@@ -201,8 +204,9 @@ return [
 		'URL'       => Illuminate\Support\Facades\URL::class ,
 		'Validator' => Illuminate\Support\Facades\Validator::class ,
 		'View'      => Illuminate\Support\Facades\View::class ,
-		'Form' 		  => Collective\Html\FormFacade::class,
-    'Html' 			=> Collective\Html\HtmlFacade::class,
+		'Form' 		=> Collective\Html\FormFacade::class,
+    	'Html' 		=> Collective\Html\HtmlFacade::class,
+    	'Notification' => Krucas\Notification\Facades\Notification::class,
 	],
 
 ];

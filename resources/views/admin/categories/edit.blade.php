@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 	@section('content')
 		<article>
 			<header>
@@ -6,15 +6,25 @@
 			</header>
 			<section>
 				<div class="row">
-						<div class="col l12">
+						<div class="col-md-12">
+							<!-- Listar Erros -->
+				            @if($errors->any)
+				                <div class="panel-info">
+				                    <ul class="alert">
+				                       @foreach($errors->all() as $error)
+				                           <li>{{$error}}</li>
+				                       @endforeach
+				                    </ul>
+				                </div>
+				            @endif
 
 							{!! Form::model($category,['route'=> ['admin.categories.update','id'=>$category->id],'method'=>'put']) !!}
 								@include('admin.categories.form')
-								<div class="mdl-textfield mdl-js-textfield">
-									<button class="grey btn-floating btn-large waves-effect waves-light" type="submit">
-										<i class="material-icons">edit</i>
+								<div class="form-group">
+									<button class="btn btn-success" type="submit">
+										<i class="fa fa-pencil fa-x5"></i>
 									</button>
-									<a href="{{route('admin.categories.index')}}" class="grey btn-floating btn-large waves-effect waves-light"><i class="material-icons">keyboard_return</i></a>
+									<a href="{{route('admin.categories.index')}}" class="btn btn-danger"><i class="fa fa-minus fa-x5"></i></a>
 								</div>
 							{!! Form::close()!!}
 						</div>

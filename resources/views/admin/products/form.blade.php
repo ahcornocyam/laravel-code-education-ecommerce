@@ -1,46 +1,44 @@
-
-
 <div class="row">
-	<div class="input-field col l4">		
-		{!! Form::select('category_id',$categories,null) !!}
-		{!! Form::label('category','Categoria:') !!}
+	<div class="form-group">
+		{!! Form::label('category','Categoria:',['class'=>'form-label']) !!}
+		{!! Form::select('category_id',$categories,null,['class'=>'form-control']) !!}
 	</div>
-</div>
-<div class="col l12">
-	<div class="input-field">
-		{!! Form::label('name','Nome:')!!}
-		{!! Form::text('name',null,['length'=> '80']) !!}
+
+
+	<div class="form-group">
+		{!! Form::label('name','Nome:',['class'=>'form-label'])!!}
+		{!! Form::text('name',null,['length'=> '80','class'=>'form-control']) !!}
 	</div>
-</div>
-<div class="col l12">
-	<div class="input-field">
-		{!! Form::label('description','Descrição:')!!}
+
+	<div class="form-group">
+		{!! Form::label('description','Descrição:',['class'=>'form-label'])!!}
 		{!! Form::textarea('description',null,[
-			'rows' 	=> '5',
-			'class' => 'materialize-textarea'
-			]) !!}
+				'rows' 	=> '5',
+				'class' => 'form-control'
+				]) !!}
 	</div>
-</div>
-<div class="col l4">
-	<div class="input-field">
-		{!! Form::label('price','Preço:')!!}
+	<div class="form-group col-md-1">
+		{!! Form::label('price','Preço:',['class'=>'form-label'])!!}
 		{!! Form::number('price',null,[
-			'min' 	=> '0'
-			]) !!}
+				'min' 	=> '0',
+				'class' => 'form-control'
+				]) !!}
 	</div>
 </div>
+
 <div class="row">
-	<div class="col l6">
-	    {!! Form::checkbox('featured',1,isset($product) && $product->featured == 1 ? true : false,[
-				'id' =>'featured'
-				]) !!}
-			{!! Form::label('featured','Em destaque:')!!}
+	<div class="form-group col-md-6">
+		{!! Form::checkbox('featured',1,isset($product) && $product->featured == 1 ? true : false,[
+					'id' 	=> 'featured',
+					'class' => 'form-control'
+					]) !!}
+		{!! Form::label('featured','Em destaque:',['class'=>'form-label'])!!}
 	</div>
-	<div class="col l6">
-    	{!! Form::checkbox('recommend',1,isset($product) && $product->recommend == 1 ? true : false,[
-				'id' =>"recommend",
-				'class' =>'grey-text'
-				]) !!}
-			{!! Form::label('recommend','Recomendado:')!!}
+	<div class="form-group col-md-6">
+	    	{!! Form::checkbox('recommend',1,isset($product) && $product->recommend == 1 ? true : false,[
+					'id' =>"recommend",
+					'class' =>'form-control'
+					]) !!}
+				{!! Form::label('recommend','Recomendado:',['class'=>'form-label'])!!}
 	</div>
 </div>

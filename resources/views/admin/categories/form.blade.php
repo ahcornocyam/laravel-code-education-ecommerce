@@ -1,10 +1,10 @@
-<div class="input-field col l12">
-		{!! Form::label('name','Nome:')!!}
-		{!! Form::text('name',null) !!}
+<div class="form-group">
+		{!! Form::label('name','Nome:',['class'=>'form-label'])!!}
+		{!! Form::text('name',null,['class'=>'form-control']) !!}
 </div>
-<div class="input-field col l12">
-		{!! Form::label('description','Descrição:')!!}
+<div class="form-group">
+		{!! Form::label('description','Descrição:',['class'=>'form-label'])!!}
 		{!! Form::textarea('description',null,[
-			'class' => 'materialize-textarea'
+			'class' => 'form-control'
 		]) !!}
 </div>

@@ -1,12 +1,12 @@
-@extends('app')
+@extends('layouts.app')
 	@section('content')
 		<article>
 			<header>
 				<h1>Produtos</h1>
 			</header>
 			<section class="mdl-grid">
-				<a href="{{ route('admin.products.create')}}" class="waves-effect waves-light btn grey">Novo Produto</a>
-				<table class="bordered highlight" width="100%">
+				<a href="{{ route('admin.products.create')}}" class="btn btn-default">Novo Produto</a>
+				<table class="table table-hover" width="100%">
 					<thead>
 						<tr>
 							<th> Nome </th>
@@ -28,15 +28,15 @@
 								<td> {{ ($item->featured)? 'sim' : 'não' }} </td>
 								<td> {{ ($item->recommend)? 'sim': 'não' }} </td>
 								<td>
-									<a href="{{ route('admin.products.edit',['id' => $item->id ]) }}" class="waves-effect waves-grey btn-flat"><i class="material-icons">edit</i></a> |
-									<a href="{{ route('admin.images.index',['id' => $item->id ]) }}"class="waves-effect waves-grey btn-flat"><i class="material-icons">image</i></a>|
-									<a href="{{ route('admin.products.destroy',['id' => $item->id ]) }}"class="waves-effect waves-grey btn-flat"><i class="material-icons">delete</i></a>
+									<a href="{{ route('admin.products.edit',['id' => $item->id ]) }}" class="btn btn-primary"><i class="fa fa-edit fa-x5"></i></a> |
+									<a href="{{ route('admin.images.index',['id' => $item->id ]) }}"class="btn btn-success"><i class="fa fa-picture-o fa-x5"></i></a>|
+									<a href="{{ route('admin.products.destroy',['id' => $item->id ]) }}"class="btn btn-danger"><i class="fa fa-trash-o fa-x5"></i></a>
 								 </td>
 							</tr>
 							@endforeach
 					</tbody>
 				</table>
-				<div class="center-align">
+				<div class="text-center">
 					{{ $product->render() }}
 				</div>
 			</section>
