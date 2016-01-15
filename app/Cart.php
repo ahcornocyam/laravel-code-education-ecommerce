@@ -10,7 +10,7 @@
 			$this->items = [];
 		}
 
-		public function add( $id, $name, $price, $image )
+		public function add( $id, $name, $price )
 		{
 			$this->items +=
 			[
@@ -19,13 +19,12 @@
 						'qtd' 		=> isset($this->items[$id]['qtd']) ? $this->items[$id]['qtd']++ : 1 ,
 						'name' 		=> $name,
 						'price' 	=> $price,
-						'image'		=> $image
 					]
 			];
 			return $this->items;
 		}
 
-		public function update( $id, $name, $price, $image, $qtd )
+		public function update( $id, $name, $price, $qtd )
 		{
 			$this->items +=
 			[

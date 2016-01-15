@@ -6,7 +6,7 @@
                     <table class="table table-condensed">
     					<thead>
     						<tr class="cart_menu">
-    							<th class="image">Item</th>
+    							<th class="item">Item</th>
     							<th class="description"></th>
     							<th class="price">Preço</th>
     							<th class="qtd">Quantidade</th>
@@ -18,9 +18,6 @@
     						@forelse( $cart->all() as $c=>$item )
     						<tr>
     							<td class="cart_product">
-    								 <a href="#">
-                                        <img src="{{ url( 'uploads/'.$item['image']->id.'.'.$item['image']->extension ) }}" alt="" width="80">
-                                    </a>
     							</td>
     							<td class="cart_description">
     								<h4><a href="{{ route('product.show',['id'=> $c]) }}"> {{ $item['name'] }}</a></h4>

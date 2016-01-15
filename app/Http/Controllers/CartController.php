@@ -42,7 +42,7 @@ class CartController extends Controller
         $cart       = $this->getCart($session);
         $product    = $this->product->find($id);
 
-        $cart->add( $id, $product->name, $product->price, $product->images->first() );
+        $cart->add( $id, $product->name, $product->price );
 
         $session::put( 'cart', $cart );
 
@@ -71,7 +71,7 @@ class CartController extends Controller
 
         $cart = $session::get('cart');
         $product = $this->product->find($id);
-        $cart->update( $id, $product->name, $product->price, $product->images->first(), $data['qtd']);
+        $cart->update( $id, $product->name, $product->price, $data['qtd']);
         if($data['qtd'] == 0 ){
             $cart->remove($id);
         }
