@@ -43,7 +43,20 @@ class CheckoutController extends Controller
     				]);
     		}
             Session::pull('cart','');
-    		return redirect()->route('home');
+
+            notify()->flash('Concluido','success',[
+                'time' => 3000,
+                'text' => 'Ordem de pedido Emitido',
+
+            ]);
+
+            return redirect()->route('home');
     	}
+        notify()->flash('Falha','warning',[
+            'time' => 3000,
+            'text' => 'Não há produtos no carrinho',
+
+        ]);
+        return redirect()->route('cart.index');
     }
 }

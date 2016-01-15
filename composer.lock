@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "326228ebc45e8913ad02032fea125534",
-    "content-hash": "2f9741cd7613c3a3f4fc23547f7a4791",
+    "hash": "f2e3b8d7c02907d1377e06c0c571d693",
+    "content-hash": "0345b248d1145efa7400d2ae2e335838",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -154,6 +154,46 @@
             "time": "2015-11-09 22:51:51"
         },
         {
+            "name": "codecourse/notify",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codecourse/notify.git",
+                "reference": "1abffc3d9a6d8ef79d9f2c0af0a1bcadc86bf4c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codecourse/notify/zipball/1abffc3d9a6d8ef79d9f2c0af0a1bcadc86bf4c1",
+                "reference": "1abffc3d9a6d8ef79d9f2c0af0a1bcadc86bf4c1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Codecourse\\Notify\\": "src/"
+                },
+                "files": [
+                    "src/Codecourse/Notify/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Garrett",
+                    "email": "alex@codecourse.com"
+                }
+            ],
+            "description": "Flexible flash notifications for Laravel",
+            "time": "2015-12-01 09:20:03"
+        },
+        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -252,54 +292,6 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
-        },
-        {
-            "name": "edvinaskrucas/notification",
-            "version": "5.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/edvinaskrucas/notification.git",
-                "reference": "dddcc8f9aaa80f524d26198afb7916170764d914"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/edvinaskrucas/notification/zipball/dddcc8f9aaa80f524d26198afb7916170764d914",
-                "reference": "dddcc8f9aaa80f524d26198afb7916170764d914",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/session": "5.*",
-                "illuminate/support": "5.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Krucas\\Notification": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Edvinas Kručas",
-                    "email": "edv.krucas@gmail.com"
-                }
-            ],
-            "description": "Package for Laravel for helping to manage flash / instant notifications / messages.",
-            "keywords": [
-                "flash",
-                "instant",
-                "laravel",
-                "messages",
-                "notifications"
-            ],
-            "time": "2015-10-18 09:36:17"
         },
         {
             "name": "ircmaxell/password-compat",

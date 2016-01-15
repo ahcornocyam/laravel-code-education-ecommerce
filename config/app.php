@@ -157,7 +157,7 @@ return [
 		CodeCommerce\Providers\RouteServiceProvider::class ,
 
 		Barryvdh\Cors\ServiceProvider::class,
-		Krucas\Notification\NotificationServiceProvider::class,
+		Codecourse\Notify\NotifyServiceProvider::class,
 
 	],
 
@@ -206,7 +206,7 @@ return [
 		'View'      => Illuminate\Support\Facades\View::class ,
 		'Form' 		=> Collective\Html\FormFacade::class,
     	'Html' 		=> Collective\Html\HtmlFacade::class,
-    	'Notification' => Krucas\Notification\Facades\Notification::class,
+		'Notify' => Codecourse\Notify\Facades\Notify::class,
 	],
 
 ];

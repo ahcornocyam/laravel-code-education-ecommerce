@@ -17,6 +17,7 @@ elixir(function(mix) {
     	'font-awesome.min.css',
     	'prettyPhoto.css',
     	'animate.css',
+		'sweetalert.css',
     	'main.css',
     	'price-range.css',
     	'responsive.css'],'public/css/app.css');
@@ -26,6 +27,7 @@ elixir(function(mix) {
     	'jquery.scrollUp.min.js',
     	'price-range.js',
     	'jquery.prettyPhoto.js',
+		'sweetalert.js',
     	'main.js',
     	'contact.js',
     	'gmaps.js',

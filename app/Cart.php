@@ -34,7 +34,6 @@
 						'qtd' 		=>  $this->items[$id]['qtd'] = $qtd ,
 						'name' 		=> $name,
 						'price' 	=> $price,
-						'image'		=> $image,
 					]
 			];
 

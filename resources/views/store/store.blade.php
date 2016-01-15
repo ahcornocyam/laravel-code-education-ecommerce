@@ -9,9 +9,7 @@
 
 
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js">
 </head><!--/head-->
 
 <body>
@@ -54,7 +52,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
                             <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>                            
+                            <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                         </ul>
                         <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -158,9 +156,22 @@
 
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 
 <script src="{{ elixir('js/app.js') }}"></script>
-
+@if (notify()->ready())
+    <script>
+        swal({
+            title: "{!! notify()->message() !!}",
+            text: "{!! notify()->option('text') !!}",
+            type: "{{ notify()->type() }}",
+            @if (notify()->option('timer'))
+                timer: {{ notify()->option('timer') }},
+            showConfirmButton: false
+            @endif
+        });
+    </script>
+@endif
 </body>
 </html>
