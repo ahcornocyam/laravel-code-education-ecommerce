@@ -6,7 +6,6 @@
   },
   "dependencies": {
     "gulp-sass": "^2.1.1",
-    "laravel-elixir": "^4.0.0"
-    
+    "laravel-elixir": "^4.0.0"    
   }
 }

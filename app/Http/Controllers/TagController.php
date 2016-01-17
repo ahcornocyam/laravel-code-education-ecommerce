@@ -11,10 +11,10 @@ use CodeCommerce\Category;
 
 class TagController extends Controller
 {
-    
+
     private $tag;
     private $categories;
-    
+
     public function __construct(Tag $tag, Category $categories)
     {
         $this->tag          = $tag;
@@ -33,10 +33,10 @@ class TagController extends Controller
         $pFeatured  = $products->featured()->get();
         $pRecommend = $products->recommend()->get();
 
-        return view('store.tag',compact('categories','pFeatured','pRecommend'));
+        return view('store.tag', compact('categories', 'pFeatured', 'pRecommend'));
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
