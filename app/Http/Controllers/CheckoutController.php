@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
+
+use CodeCommerce\Product;
+
+use CodeCommerce\Category;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use CodeCommerce\Order;
@@ -24,7 +28,7 @@ class CheckoutController extends Controller
         if (!Session::has('cart')) {
             return false;
         }
-
+        $categories = Category::all();
         $cart = Session::get('cart');
 
         if ($cart->getTotal() > 0) {
@@ -38,27 +42,16 @@ class CheckoutController extends Controller
             foreach ($cart->all() as $k => $item) {
 
                 $order->items()->create([
-                        'product_id'     => $k,
-                        'price'         => $item['price'],
-                        'qtd'            => $item['qtd']
+                        'product_id' => $k,
+                        'price'      => $item['price'],
+                        'qtd'        => $item['qtd']
                     ]);
             }
+          
+            $cart->clear();
 
-            Session::pull('cart', '');
-
-            notify()->flash('Concluido', 'success', [
-                'time' => 3000,
-                'text' => 'Ordem de pedido Emitido',
-
-            ]);
-
-            return redirect()->route('home');
+            return view('store.checkout', compact('order', 'categories'));
         }
-        notify()->flash('Falha', 'warning', [
-            'time' => 3000,
-            'text' => 'Não há produtos no carrinho',
-
-        ]);
-        return redirect()->route('cart.index');
+        return view('store.checkout', ['cart'=>'empty','categories'=>$categories]);
     }
 }

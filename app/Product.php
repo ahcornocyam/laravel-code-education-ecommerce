@@ -9,7 +9,7 @@ class Product extends Model
     //
 		protected  $table       = 'products';
 	 	protected $primarykey   = 'id';
-		protected $fillable 	=
+		protected $fillable 		=
 		[
 			'category_id',
 			'id',
@@ -17,37 +17,45 @@ class Product extends Model
 			'description',
 			'price',
 			'featured',
-			'recommend',			
+			'recommend',
 		];
-		
+
 		/*
 		* Relacionamento com categories
 		*/
-		public function category(){
+		public function category()
+		{
 			return $this->belongsTo('CodeCommerce\Category');
-		}	
-		
+		}
+
 		/*
      * Relacionamento com produtimage
      */
-    public function images(){
+    public function images()
+		{
         return $this->hasMany('CodeCommerce\ProductImage');
     }
-	
+
 	/*
 	* Relacionmento com tag
 	*/
 	public function tags(){
 		return $this->belongsToMany('CodeCommerce\Tag');
 	}
-	
-	public function getTagsListAttribute(){
-			$tagList = $this->tags->lists('name')->all();
-			return implode( ', ',$tagList );
+
+	public function orderItems()
+	{
+		return $this->hasMany('CodeCommerce\OrderItem');
 	}
 
-	public function scopeFeatured($query){
-		return $query->where('featured','=','1');
+	public function getTagsListAttribute(){
+			$tagList = $this->tags->lists('name')->all();
+			return implode(', ', $tagList);
+	}
+
+	public function scopeFeatured($query)
+	{
+		return $query->where('featured','=', '1');
 	}
 
 	public function scopeRecommend($query){
@@ -55,6 +63,6 @@ class Product extends Model
 	}
 
 	public function scopeOfCategory($query, $type){
-		return $query->where('category_id','=',$type);
+		return $query->where('category_id','=', $type);
 	}
 }

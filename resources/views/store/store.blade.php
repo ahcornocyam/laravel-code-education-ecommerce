@@ -50,7 +50,7 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
+                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Minha conta</a></li>
                             <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                         </ul>
@@ -72,7 +72,7 @@
                         </li>
                     @endif
                 </ul>
-                        
+
                     </div>
                 </div>
             </div>
@@ -96,11 +96,11 @@
                             <li><a href="/" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.html">Products</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="{{ route('home') }}">Products</a></li>
+                                    <li><a href="{{ route('home') }}">Product Details</a></li>
+                                    <li><a href="{{ route('checkout.place') }}">Checkout</a></li>
                                     <li><a href="{{ route('cart.index') }}">Cart</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="{{ url('/login')}}">Login</a></li>
                                 </ul>
                             </li>
 
