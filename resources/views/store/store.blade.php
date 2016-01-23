@@ -9,7 +9,8 @@
 
 
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 </head><!--/head-->
 
 <body>
@@ -50,8 +51,8 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Meus Pedidos</a></li>
+                            <li><a href="{{ route('checkout.place')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                         </ul>
                         <!-- Right Side Of Navbar -->
@@ -67,6 +68,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route('account.orders') }}"><i class="fa fa-btn fa-sign-out"></i>Meus Pedidos</a></li>
+                                <li><a href="{{ route('account.index')}}"><i class="fa fa-btn fa-sign-out"></i>Minha Conta</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -156,10 +159,14 @@
 
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="{{ elixir('js/cidadesEstados.js') }}">
+</script>
 <script src="{{ elixir('js/app.js') }}"></script>
+
 @if (notify()->ready())
     <script>
         swal({

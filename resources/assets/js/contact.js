@@ -1,5 +1,4 @@
 jQuery(function($) {'use strict',
-
 	var form = $('.contact-form');
 	form.submit(function () {'use strict',
 		$this = $(this);
@@ -43,7 +42,7 @@ jQuery(function($) {'use strict',
 		backgroundColor: '#ffffff',
 	});
 
-	var styles = [ 
+	var styles = [
 
 	{
 		"featureType": "road",
@@ -84,7 +83,7 @@ jQuery(function($) {'use strict',
 	map.addStyle({
 		styledMapName:"Styled Map",
 		styles: styles,
-		mapTypeId: "map_style"  
+		mapTypeId: "map_style"
 	});
 
 	map.setStyle("map_style");

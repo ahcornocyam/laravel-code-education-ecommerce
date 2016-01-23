@@ -14,11 +14,37 @@
                             <label class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="nome">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Cpf</label>
+
+                            <div class="col-md-6">
+                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" placeholder="cpf" placeholder="999.999.999-99">
+
+                                @if ($errors->has('cpf'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('cpf') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('fone') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Telefone</label>
+
+                            <div class="col-md-6">
+                                <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="(99)9999-9999">
+
+                                @if ($errors->has('fone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('fone') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -28,7 +54,7 @@
                             <label class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="seuemail@aqui.com">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -42,7 +68,7 @@
                             <label class="col-md-4 control-label">Senha</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" placeholder="sua senha">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -56,7 +82,7 @@
                             <label class="col-md-4 control-label">Confirmar Senha</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="confime a senha">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -64,7 +90,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div>                      
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -79,4 +105,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -9,10 +9,11 @@ class Order extends Model
     //
     protected $table    = "orders";
     protected $fillable = [
-    	'user_id',
-    	'total',
-    	'status'
-    ];
+                	'user_id',
+                	'total',
+                	'status'
+              ];
+    protected $dates = ['created_at', 'updated_at'];
 
     public function items()
     {
@@ -21,6 +22,10 @@ class Order extends Model
 
     public function user()
     {
-    	 return $this->belongsTo('CodeCommerce\User');
+        return $this->belongsTo('CodeCommerce\User');
+    }
+    public function getOrderUserAttribute()
+    {
+
     }
 }

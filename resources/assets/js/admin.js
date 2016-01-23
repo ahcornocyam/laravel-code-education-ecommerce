@@ -5,5 +5,3 @@ console.log('certinho');
 order.click(function(){
   window.location.href = './orders/edit/'+$(this).attr('data-id');
 });
-
-//# sourceMappingURL=admin.js.map

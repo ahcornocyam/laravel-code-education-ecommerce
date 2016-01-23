@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name', 'email', 'password','is_admin'
+        'id','name','cpf','fone', 'email', 'password','is_admin'
     ];
 
     /**
@@ -27,5 +27,10 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany('CodeCommerce\Order');
+    }
+
+    public function enderecos()
+    {
+            return $this->hasMany('CodeCommerce\Endereco');
     }
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Area Admistrativa-codeCommerce</title>
 
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 </head>
@@ -34,6 +34,7 @@
                     <li><a href="{{ route('admin.index') }}">Home</a></li>
                     <li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
                     <li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
+                    <li><a href="{{ route('admin.orders.index') }}">Pedidos</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -63,7 +64,8 @@
     <!-- JavaScripts -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{ elixir('js/admin.js') }}"></script>
     <script src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

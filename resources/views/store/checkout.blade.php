@@ -12,7 +12,8 @@
 					<h3>Pedido Realizado com sucesso</h3>
 
 					<p>
-						O Pedido #{{ isset($order->id) }}, foi realizado com sucesso.
+						{{-- dd($order->id) --}}
+						O Pedido #{{ $order->id }}, foi realizado com sucesso.
 					</p>
 				@endif
 
