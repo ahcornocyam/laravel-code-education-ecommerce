@@ -22,7 +22,7 @@
                   <td>{{$order->id}}</td>
                   <td>{{ $order->user->name}}</td>
                   <td>R$:{{ number_format($order->total , 2, ',','.')}}</td>
-                  <td>{{ $order->status == 0 ? "Pedido em processo": "Pedido Realizado"}}</td>
+                  <td>{{ $order->status }}</td>
                   <td>{{ $order->created_at->format('d/m/Y')}}</td>
                   <td></td>
                 </tr>

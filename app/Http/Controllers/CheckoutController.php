@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use CodeCommerce\Order;
 use CodeCommerce\OrderItem;
+use PHPSC\PagSeguro\Requests\Checkout\CheckoutService;
+use PHPSC\PagSeguro\Purchases\Transactions\Locator;
+use PHPSC\PagSeguro\Items\Item;
 
 class CheckoutController extends Controller
 {
@@ -23,7 +26,7 @@ class CheckoutController extends Controller
         $this->middleware('auth');
     }
 
-    public function place(Order $orderModel, OrderItem $orderItem)
+    public function place(CheckoutService $checkoutService, Order $orderModel, OrderItem $orderItem)
     {
         if (!Session::has('cart')) {
             return false;
@@ -38,9 +41,10 @@ class CheckoutController extends Controller
                     'total'       => $cart->getTotal()
                 ]
             );
+            $checkout =  $checkoutService->createCheckoutBuilder();
 
             foreach ($cart->all() as $k => $item) {
-
+                $checkout->addItem(new Item($k, $item['name'], number_format($item['price'], 2, '.', ',')));
                 $order->items()->create([
                         'product_id' => $k,
                         'price'      => $item['price'],
@@ -50,9 +54,41 @@ class CheckoutController extends Controller
 
             $cart->clear();
             event(new \CodeCommerce\Events\CheckoutEvent(Auth::user(), $order));
-
-            return view('store.checkout', compact('order', 'categories'));
+            Session::put('orderId', $order->id);
+            $response= $checkoutService->checkout($checkout->getCheckout());
+            return redirect($response->getRedirectionUrl());
         }
         return view('store.checkout', ['cart'=>'empty','categories'=>$categories]);
+    }
+
+    public function returnCheckout(Locator $locator, Request $request, Order $orderModel)
+    {
+        $transactionCode = $request->get('id_pagseguro');
+        $transaction = $locator->getByCode($transactionCode);
+
+        $orderId = Session::get('orderId');
+
+        $orders  = Auth::user()->orders();
+        $orders->find($orderId)->update([
+          'id_pagseguro' => $transactionCode,
+          'status' => $transaction->getDetails()->getStatus()
+        ]);
+        $orderId = null;
+        return redirect()->route('home');
+    }
+
+    public function status(Locator $locator, Request $request, Order $orderModel)
+    {
+        dd($request->all());
+        $transactionCode = $request->get('id_pagseguro');
+        $transaction = $locator->getByCode($transactionCode);
+
+        $orderId = Session::get('orderId');
+
+        $orders  = Auth::user()->orders();
+        $orders->find($orderId)->update([
+          'status' => $transaction->getDetails()->getStatus()
+        ]);
+        $orderId = null;
     }
 }

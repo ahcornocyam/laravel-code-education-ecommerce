@@ -11,7 +11,7 @@ class Cart
 		$this->items = [];
 	}
 
-	public function add( $id, $name, $price )
+	public function add( $id, $name, $price)
 	{
 		$this->items +=
 		[

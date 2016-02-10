@@ -35,6 +35,10 @@ Route::group(['middleware'=>['web']], function () {
 		});
 		/* Rota de ordem de serviço*/
 		Route::get('checkout/placeorder', ['as'=> 'checkout.place','uses' =>'CheckoutController@place']);
+		Route::get('checkout/return', ['as'=> 'checkout.return','uses' =>'CheckoutController@returnCheckout']);
+		Route::post('checkout/status', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@status']);
+		/* Rota de teste PagSeguro*/
+		Route::get('test', ['as'=> 'checkout.test', 'uses'=> 'CheckoutController@test' ]);
 		/* Rota de categorias */
 		Route::group(['prefix'=>'category'], function () {
 			Route::get('{id?}', ['as'=>'category.show', 'uses'=>'CategoryController@show']);

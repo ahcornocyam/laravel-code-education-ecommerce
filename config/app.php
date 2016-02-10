@@ -158,6 +158,7 @@ return [
 
 		Barryvdh\Cors\ServiceProvider::class,
 		Codecourse\Notify\NotifyServiceProvider::class,
+		LaravelPagseguro\LaravelPagseguroServiceProvider::class,
 
 	],
 

@@ -8,6 +8,7 @@
 				<th>Itens</th>
 				<th>Valor</th>
 				<th>Status</th>
+				<th>Código transação</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,7 +24,8 @@
 						@endforeach
 					</td>
 					<td>R$: {{ number_format($order->total,2,",",".") }}</td>
-					<td>{{ ($order->status == 0 )? "Pedido em processo..." : "Pedido realizado" }}</td>
+					<td>{{ $order->status }}</td>
+					<td>{{ $order->id_pagseguro}}</td>
 				</tr>
 			@endforeach
 		</tbody>
