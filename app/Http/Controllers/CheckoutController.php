@@ -80,15 +80,9 @@ class CheckoutController extends Controller
     public function status(Locator $locator, Request $request, Order $orderModel)
     {
         dd($request->all());
-        $transactionCode = $request->get('id_pagseguro');
-        $transaction = $locator->getByCode($transactionCode);
-
-        $orderId = Session::get('orderId');
-
-        $orders  = Auth::user()->orders();
-        $orders->find($orderId)->update([
-          'status' => $transaction->getDetails()->getStatus()
-        ]);
-        $orderId = null;
+    }
+    public function statusConsulta(Locator $locator, Request $request, Order $orderModel)
+    {
+        dd($request->all());
     }
 }

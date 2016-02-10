@@ -37,6 +37,7 @@ Route::group(['middleware'=>['web']], function () {
 		Route::get('checkout/placeorder', ['as'=> 'checkout.place','uses' =>'CheckoutController@place']);
 		Route::get('checkout/return', ['as'=> 'checkout.return','uses' =>'CheckoutController@returnCheckout']);
 		Route::post('checkout/status', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@status']);
+		Route::get('checkout/status', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@statusConsulta']);
 		/* Rota de teste PagSeguro*/
 		Route::get('test', ['as'=> 'checkout.test', 'uses'=> 'CheckoutController@test' ]);
 		/* Rota de categorias */
