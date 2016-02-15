@@ -2,7 +2,7 @@ Caro Sr(a) {{ $user->name }}
 <br>
 <br>
 
-Recebemos seu pedido nº: {{ $order->id }}.
+Recebemos seu pedido nº: {{-- $order->id }}.
 <br>
 <br>
 O pedido será processado após recebermos da operadora a confirmação de pagamento com o cartão de crédito informado.
@@ -17,7 +17,7 @@ Nº: {{ $order->id }}
     <li>Nome do Produto: {{ $item->product->name }}</li>
     @endforeach
 
-    <li>Valor: R$ {{ $order->total }}</li>
+    <li>Valor: R$ {{ $order->total --}}</li>
 </ul>
 <br>
 <br>

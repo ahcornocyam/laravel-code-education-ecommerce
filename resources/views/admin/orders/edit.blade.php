@@ -20,46 +20,52 @@
 
 							{!! Form::model($order,['route'=> ['admin.orders.update','id'=>$order->id],'method'=>'put']) !!}
 
-                <div class="form-group">
-                    {!! Form::label('id','ID')!!}
+                <div class="form-group col-md-6">
+                    {!! Form::label('id','Código da ordem de serviço')!!}
                     {!! Form::text('id', $order->id, ['class'=>'form-group','disabled'])!!}
                 </div>
-                <div class="form-group">
-                    {!! Form::label('user_id','Nome do Cliente')!!}
+                <div class="form-group col-md-6">
+                    {!! Form::label('user_id','Nome do Cliente', ['class'=>'form-label'])!!}
                     {!! Form::text('user_id', $order->user->name, ['class'=>'form-group','disabled'])!!}
                 </div>
                 <fieldset>
                   <legend>Produtos</legend>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Items</th>
-                          <th>Valor</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                              @foreach ($order->items as $item)
-                                  <ul>
-                                    <li><a class="btn btn-link" href="{{ route('product.show',$item->product->id)}}">{{$item->product->name}}</a></li>
-                                  </ul>
-                              @endforeach
-                          </td>
-                          	<td>R$: {{ number_format($order->total,2,",",".") }}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="table-responsive">
+
+                      <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($order->items as $item)
+                            <tr>
+                              <td>{{ $item->id }}</td>
+                              <td>
+                                <a class="btn btn-link" href="{{ route('product.show',$item->product->id)}}">{{$item->product->name}}</a>
+                              </td>
+                              <td> {{ $item->qtd }}</td>
+                              <td>R$: {{ number_format($item->price,2,",",".") }}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="4">
+                              Total: R$: <strong>{{ number_format($order->total, 2, ",", ".")  }}</strong>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
                 </fieldset>
                 <div class="form-group">
-                  <div class="col-md-6">
-                    {!! Form::label('status','Pedido Realizado',['class'=>'form-label']) !!}
-                    {!! Form::radio('status',1, $order->status,['class'=>'form-control']) !!}
-                  </div>
-                  <div class="col-md-6">
-                    {!! Form::label('status','Pedido em Processo',['class'=>'form-label']) !!}
-                    {!! Form::radio('status',0, $order->status,['class'=>'form-control']) !!}
-                  </div>
+                  {!! Form::label('status_id', 'Status do pedido',['class'=>'form-label'])!!}
+                  {!! Form::select('status_id', $status, null, ['class'=>'form-control'] )!!}
                 </div>
 								<div class="form-group">
 									<button class="btn btn-success" type="submit">

@@ -11,22 +11,30 @@ class Order extends Model
     protected $fillable = [
                 	'user_id',
                 	'total',
-                	'status',
-                  'id_pagseguro'
+                	'status_id',
+                  'transaction_code',
+                  'payment_type_id',
+                  'netAmount'
               ];
     protected $dates = ['created_at', 'updated_at'];
 
     public function items()
     {
-    	   return $this->hasMany('CodeCommerce\OrderItem');
+    	  return $this->hasMany('CodeCommerce\OrderItem');
     }
 
     public function user()
     {
         return $this->belongsTo('CodeCommerce\User');
     }
-    public function getOrderUserAttribute()
-    {
 
+    public function orderPaymenttype()
+    {
+        return $this->belongsTo('CodeCommerce\OrderPaymenttype');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('CodeCommerce\OrderStatus');
     }
 }

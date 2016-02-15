@@ -29,9 +29,9 @@ class SendEmailCheckout
     {
         //
         $user   = $event->getUser();
-        $order  = $event->getOrder();
+        //$order  = $event->getOrder();
 
-        Mail::send('emails.reminder_purchase', compact('user', 'order'), function ($message) use ($order, $user) {
+        Mail::send('emails.reminder_purchase', compact('user'), function ($message) use ($user) {
             $message->from('contato@codecommerce.com', 'Code Commerce');
             $message->to($user->email, $user->name);
             $message->subject('Code Commerce | Recebemos seu Pedido');

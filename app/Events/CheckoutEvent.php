@@ -22,10 +22,9 @@ class CheckoutEvent extends Event
      *
      * @return void
      */
-    public function __construct(User $user, Order $order)
+    public function __construct(User $user)
     {
         $this->user   = $user;
-        $this->order  = $order;
     }
 
     /**

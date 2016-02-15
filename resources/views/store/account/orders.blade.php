@@ -12,7 +12,6 @@
 			</tr>
 		</thead>
 		<tbody>
-
 			@foreach ($orders as $order)
 				<tr data-id="{{ $order->id }}">
 					<td>{{ $order->id }}</td>
@@ -24,8 +23,8 @@
 						@endforeach
 					</td>
 					<td>R$: {{ number_format($order->total,2,",",".") }}</td>
-					<td>{{ $order->status }}</td>
-					<td>{{ $order->id_pagseguro}}</td>
+					<td>{{ $order->status->name }}</td>
+					<td>{{ $order->transaction_code }}</td>
 				</tr>
 			@endforeach
 		</tbody>

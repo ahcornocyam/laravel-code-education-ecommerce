@@ -34,12 +34,11 @@ Route::group(['middleware'=>['web']], function () {
 				Route::get('/', ['as'=>'cart.index', 'uses'=>'CartController@index']);
 		});
 		/* Rota de ordem de serviço*/
-		Route::get('checkout/placeorder', ['as'=> 'checkout.place','uses' =>'CheckoutController@place']);
-		Route::get('checkout/return', ['as'=> 'checkout.return','uses' =>'CheckoutController@returnCheckout']);
-		Route::post('checkout/status', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@status']);
-		Route::get('checkout/status', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@statusConsulta']);
-		/* Rota de teste PagSeguro*/
-		Route::get('test', ['as'=> 'checkout.test', 'uses'=> 'CheckoutController@test' ]);
+		Route::group(['prefix'=> 'checkout'], function () {
+			Route::get('placeorder', ['as'=> 'checkout.place','uses' =>'CheckoutController@place']);
+			Route::get('return', ['as'=> 'checkout.return','uses' =>'CheckoutController@returnCheckout']);
+			Route::post('notification', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@notification']);		
+		});
 		/* Rota de categorias */
 		Route::group(['prefix'=>'category'], function () {
 			Route::get('{id?}', ['as'=>'category.show', 'uses'=>'CategoryController@show']);

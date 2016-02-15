@@ -49,5 +49,6 @@ class Kernel extends HttpKernel
         'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest'         => \CodeCommerce\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'cors'          => \CodeCommerce\Http\Middleware\Cors::class, // <<< add this line
     ];
 }

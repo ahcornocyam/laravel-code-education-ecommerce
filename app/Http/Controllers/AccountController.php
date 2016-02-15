@@ -10,6 +10,7 @@ use CodeCommerce\Http\Controllers\Controller;
 
 use CodeCommerce\Category;
 use CodeCommerce\Endereco;
+use CodeCommerce\OrderStatus;
 
 class AccountController extends Controller
 {
@@ -30,7 +31,8 @@ class AccountController extends Controller
     {
         $categories = Category::all();
         $user = Auth::user();
-        $orders     = Auth::user()->orders()->paginate(5);
+        $orders = Auth::user()->orders()->paginate(5);
+
         return view('store.account.orders', compact('categories', 'orders', 'user'));
     }
     public function detail()

@@ -7,16 +7,20 @@ use Illuminate\Http\Request;
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
 
+use CodeCommerce\OrderStatus;
+
 use CodeCommerce\Order;
 
 class AdminOrdersController extends Controller
 {
 
     private $orders;
+    private $status;
 
-    public function __construct(Order $orders)
+    public function __construct(Order $orders, OrderStatus $status)
     {
         $this->orders = $orders;
+        $this->status = $status;
     }
      /**
       * Display a listing of the resource.
@@ -31,38 +35,6 @@ class AdminOrdersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -71,7 +43,8 @@ class AdminOrdersController extends Controller
     public function edit($id)
     {
         $order = $this->orders->find($id);
-        return view('admin.orders.edit', compact('order'));
+        $status = $this->status->lists('name');
+        return view('admin.orders.edit', compact('order', 'status'));
     }
 
     /**

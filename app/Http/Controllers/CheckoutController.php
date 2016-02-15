@@ -35,27 +35,17 @@ class CheckoutController extends Controller
         $cart = Session::get('cart');
 
         if ($cart->getTotal() > 0) {
-            $order = $orderModel->create(
-                [
-                    'user_id'     => Auth::user()->id,
-                    'total'       => $cart->getTotal()
-                ]
-            );
+
             $checkout =  $checkoutService->createCheckoutBuilder();
 
             foreach ($cart->all() as $k => $item) {
-                $checkout->addItem(new Item($k, $item['name'], number_format($item['price'], 2, '.', ',')));
-                $order->items()->create([
-                        'product_id' => $k,
-                        'price'      => $item['price'],
-                        'qtd'        => $item['qtd']
-                    ]);
+                $checkout->addItem(new Item($k, $item['name'], number_format($item['price'], 2, '.', ','), $item['qtd']));
             }
 
-            $cart->clear();
-            event(new \CodeCommerce\Events\CheckoutEvent(Auth::user(), $order));
-            Session::put('orderId', $order->id);
+            event(new \CodeCommerce\Events\CheckoutEvent(Auth::user()));
+
             $response= $checkoutService->checkout($checkout->getCheckout());
+
             return redirect($response->getRedirectionUrl());
         }
         return view('store.checkout', ['cart'=>'empty','categories'=>$categories]);
@@ -63,26 +53,33 @@ class CheckoutController extends Controller
 
     public function returnCheckout(Locator $locator, Request $request, Order $orderModel)
     {
-        $transactionCode = $request->get('id_pagseguro');
-        $transaction = $locator->getByCode($transactionCode);
 
-        $orderId = Session::get('orderId');
+        if (!Session::has('cart')) {
+            return "Sessão inexistente";
+        }
+        $cart = Session::get('cart');
 
-        $orders  = Auth::user()->orders();
-        $orders->find($orderId)->update([
-          'id_pagseguro' => $transactionCode,
-          'status' => $transaction->getDetails()->getStatus()
+        $transaction_code = $request->get('id_pagseguro');
+
+        $transaction  = $locator->getByCode($transaction_code);
+        $status = $transaction->getDetails()->getStatus();
+        $payment_type = $transaction->getPayment()->getPaymentMethod()->getType();
+        $netAmount = $transaction->getPayment()->getNetAmount();
+
+        $order = $orderModel->create([
+            'user_id'=>Auth::user()->id,
+            'total'=>$cart->getTotal(),
+            'status_id'=>$status,
+            'transaction_code'=>$transaction_code,
+            'payment_type_id'=>$payment_type,
+            'netAmount'=>$netAmount,
         ]);
-        $orderId = null;
-        return redirect()->route('home');
-    }
+        foreach ($cart->all() as $k => $item) {
+            $order->items()->create(['product_id'=>$k, 'price'=>$item['price'], 'qtd'=>$item['qtd']]);
+        }
 
-    public function status(Locator $locator, Request $request, Order $orderModel)
-    {
-        dd($request->all());
-    }
-    public function statusConsulta(Locator $locator, Request $request, Order $orderModel)
-    {
-        dd($request->all());
+        $cart->clear();
+
+        return redirect()->route('home');
     }
 }
