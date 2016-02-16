@@ -51,7 +51,7 @@ class CheckoutController extends Controller
         return view('store.checkout', ['cart'=>'empty','categories'=>$categories]);
     }
 
-    public function returnCheckout(Locator $locator, Request $request, Order $orderModel)
+    public function end(Locator $locator, Request $request, Order $orderModel)
     {
 
         if (!Session::has('cart')) {

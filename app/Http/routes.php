@@ -36,8 +36,8 @@ Route::group(['middleware'=>['web']], function () {
 		/* Rota de ordem de serviço*/
 		Route::group(['prefix'=> 'checkout'], function () {
 			Route::get('placeorder', ['as'=> 'checkout.place','uses' =>'CheckoutController@place']);
-			Route::get('return', ['as'=> 'checkout.return','uses' =>'CheckoutController@returnCheckout']);
-			Route::post('notification', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@notification']);		
+			Route::get('end', ['as'=> 'checkout.end','uses' =>'CheckoutController@end']);
+			Route::post('notification', ['as'=> 'checkout.status', 'uses' =>'CheckoutController@notification']);
 		});
 		/* Rota de categorias */
 		Route::group(['prefix'=>'category'], function () {
