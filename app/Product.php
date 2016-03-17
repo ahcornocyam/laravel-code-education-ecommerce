@@ -42,7 +42,9 @@ class Product extends Model
 	public function tags(){
 		return $this->belongsToMany('CodeCommerce\Tag');
 	}
-
+    /*
+      Itens ordem de serviço
+    */
 	public function orderItems()
 	{
 		return $this->hasMany('CodeCommerce\OrderItem');
